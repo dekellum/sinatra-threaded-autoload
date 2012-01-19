@@ -43,6 +43,19 @@ class TestApp < Sinatra::Base
   end
 end
 
+# Note: A workaround is to simply manually require +all+ used
+# autoloads. Unfortunately that appears to be a moving target by app
+# and sinatra/rack version i.e:
+#
+# require 'rack/builder'
+# require 'rack/head'
+# require 'rack/mime'
+# require 'rack/nulllogger'
+# require 'rack/protection/frame_options'
+# require 'rack/protection/ip_spoofing'
+# require 'rack/protection/json_csrf'
+# require 'rack/protection/path_traversal'
+
 # Start the server on any available port
 server = Fishwife::HttpServer.new( :port => 0, :request_log_file => :stderr )
 server.start( TestApp )
