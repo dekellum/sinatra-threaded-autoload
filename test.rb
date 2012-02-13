@@ -34,7 +34,7 @@ if ARGV.first == '-v'
   ARGV.shift
 end
 
-# Only a 1 thread is this test reliable
+# Only the 1 thread case makes this test reliable on jruby < 1.6.6
 thread_count = ( ARGV.shift || 5 ).to_i
 
 class TestApp < Sinatra::Base
